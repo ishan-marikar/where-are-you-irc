@@ -3,7 +3,6 @@
 
 import hexchat
 import re
-import warnings
 # PyNaCl issues a warning every time it's imported
 import requests
 
