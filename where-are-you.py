@@ -7,19 +7,16 @@ import warnings
 # PyNaCl issues a warning every time it's imported
 import requests
 
-
-
-
 __module_name__ = "where-are-you"
 __module_version__ = "0.1"
 __module_description__ = "Find the location of everyone joining the channel."
 
 geoip_api = "https://freegeoip.net/json/"
-ipPattern = re.compile("[0-9]+(?:\.[0-9]+){3}")
+ip_pattern = re.compile("[0-9]+(?:\.[0-9]+){3}")
 
 def join_message_parser(word, word_eol, userdata):
 	try:
-		ip = re.findall(ipPattern, word_eol[0])
+		ip = re.findall(ip_pattern, word_eol[0])
 		complete_url = geoip_api + ip[0]
 		response = requests.get(complete_url)
 		location = response.json()
